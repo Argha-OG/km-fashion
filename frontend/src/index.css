@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply bg-background text-primary antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-wide;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-glass-10 backdrop-blur-xl border border-glass-20 shadow-lg;
+  }
+
+  .glass-card {
+    @apply bg-glass-10 backdrop-blur-md border border-glass-10 rounded-lg;
+  }
+
+  .glass-input {
+    @apply bg-transparent border-b border-glass-20 text-primary placeholder:text-gray-400 focus:outline-none focus:border-primary transition-colors duration-300;
+  }
+
+  .glass-btn {
+    @apply px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md transition-all duration-300 text-sm tracking-widest uppercase;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+}
