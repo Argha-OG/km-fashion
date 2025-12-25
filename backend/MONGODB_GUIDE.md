@@ -6,7 +6,7 @@ If you want to deploy your site or access the database from anywhere, you should
 
 ## How to Setup MongoDB Atlas (Free)
 
-1.  **Create an Account**: Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) and sign up.
+1.  **Create an Account**:Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register) and sign up.
 2.  **Create a Cluster**:
     *   Choose the **Shared** (Free) option.
     *   Select a provider (AWS) and region (closest to you).
