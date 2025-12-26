@@ -2,6 +2,20 @@
 @config "../tailwind.config.js";
 
 @layer base {
+  :root {
+    --background: 255 255 255;
+    --surface: 243 244 246;
+    --primary: 18 18 18;
+    --glass-base: 0 0 0;
+  }
+
+  .dark {
+    --background: 18 18 18;
+    --surface: 44 44 44;
+    --primary: 255 255 255;
+    --glass-base: 255 255 255;
+  }
+
   body {
     @apply bg-background text-primary antialiased;
     font-family: 'Inter', sans-serif;

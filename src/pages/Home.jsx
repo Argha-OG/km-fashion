@@ -101,7 +101,7 @@ const BestSelling = () => {
     if (bestSellers.length === 0) return null;
 
     return (
-        <section className="py-24 px-6 bg-glass-10 relative z-10 border-t border-white/5">
+        <section className="py-24 px-6 bg-glass-10 relative z-10 border-t border-primary/5">
             <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between items-end mb-16">
                     <motion.div
@@ -109,14 +109,14 @@ const BestSelling = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                     >
-                        <h2 className="text-4xl md:text-5xl font-display text-white tracking-tighter mb-2">
+                        <h2 className="text-4xl md:text-5xl font-display text-primary tracking-tighter mb-2">
                             BEST SELLING
                         </h2>
-                        <p className="text-white/50 font-light">
+                        <p className="text-primary/50 font-light">
                             Customer favorites that define the season.
                         </p>
                     </motion.div>
-                    <Link to="/shop" className="text-white/50 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest transition-colors mb-2">
+                    <Link to="/shop" className="text-primary/50 hover:text-primary flex items-center gap-2 text-sm uppercase tracking-widest transition-colors mb-2">
                         View All <ArrowRight size={16} />
                     </Link>
                 </div>
@@ -145,11 +145,11 @@ const FeaturedCollection = () => {
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="text-4xl md:text-5xl font-display text-white tracking-tighter"
+                        className="text-4xl md:text-5xl font-display text-primary tracking-tighter"
                     >
                         NEW ARRIVALS
                     </motion.h2>
-                    <Link to="/shop" className="text-white/50 hover:text-white flex items-center gap-2 text-sm uppercase tracking-widest transition-colors">
+                    <Link to="/shop" className="text-primary/50 hover:text-primary flex items-center gap-2 text-sm uppercase tracking-widest transition-colors">
                         View All <ArrowRight size={16} />
                     </Link>
                 </div>
@@ -203,17 +203,17 @@ const BrandStory = () => {
 
 const Newsletter = () => {
     return (
-        <section className="py-24 px-6 bg-background border-t border-white/5">
+        <section className="py-24 px-6 bg-background border-t border-primary/5">
             <div className="max-w-2xl mx-auto text-center">
-                <h2 className="text-3xl font-display text-white mb-4">JOIN THE MOVEMENT</h2>
-                <p className="text-white/50 font-light mb-8">Sign up for exclusive access to drops and editorial content.</p>
+                <h2 className="text-3xl font-display text-primary mb-4">JOIN THE MOVEMENT</h2>
+                <p className="text-primary/50 font-light mb-8">Sign up for exclusive access to drops and editorial content.</p>
                 <form className="flex gap-4">
                     <input
                         type="email"
                         placeholder="Enter your email"
-                        className="flex-1 bg-white/5 border border-white/10 text-white px-6 py-4 outline-none focus:border-white/30 transition-colors"
+                        className="flex-1 bg-primary/5 border border-primary/10 text-primary px-6 py-4 outline-none focus:border-primary/30 transition-colors placeholder:text-primary/30"
                     />
-                    <button className="bg-white text-black px-8 py-4 font-medium tracking-wide hover:bg-white/90 transition-colors uppercase text-sm">
+                    <button className="bg-primary text-background px-8 py-4 font-medium tracking-wide hover:bg-primary/90 transition-colors uppercase text-sm">
                         Subscribe
                     </button>
                 </form>
@@ -230,22 +230,22 @@ const Process = () => {
     ]
 
     return (
-        <section className="py-24 px-6 bg-black relative">
+        <section className="py-24 px-6 bg-background relative transition-colors duration-300">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col md:flex-row gap-12 items-center">
                     <div className="md:w-1/3">
-                        <span className="text-sm uppercase tracking-widest text-white/50 block mb-4">The Process</span>
-                        <h2 className="text-4xl md:text-5xl font-display text-white mb-6">ENGINEERED<br />PERFECTION</h2>
-                        <p className="text-white/60 font-light leading-relaxed">
+                        <span className="text-sm uppercase tracking-widest text-primary/50 block mb-4">The Process</span>
+                        <h2 className="text-4xl md:text-5xl font-display text-primary mb-6">ENGINEERED<br />PERFECTION</h2>
+                        <p className="text-primary/60 font-light leading-relaxed">
                             We don't just make clothes; we engineer garments. Every stitch is calculated, every fabric is tested.
                         </p>
                     </div>
                     <div className="md:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-6">
                         {steps.map(step => (
-                            <GlassCard key={step.id} className="bg-white/5 border-white/5 p-8" hoverEffect>
-                                <span className="text-4xl font-display text-white/20 mb-4 block">0{step.id}</span>
-                                <h3 className="text-xl text-white font-medium mb-2">{step.title}</h3>
-                                <p className="text-sm text-white/50 leading-relaxed">{step.desc}</p>
+                            <GlassCard key={step.id} className="bg-primary/5 border-primary/5 p-8" hoverEffect>
+                                <span className="text-4xl font-display text-primary/20 mb-4 block">0{step.id}</span>
+                                <h3 className="text-xl text-primary font-medium mb-2">{step.title}</h3>
+                                <p className="text-sm text-primary/50 leading-relaxed">{step.desc}</p>
                             </GlassCard>
                         ))}
                     </div>

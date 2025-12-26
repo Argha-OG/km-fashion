@@ -11,10 +11,10 @@ import { cn } from '@/lib/utils'
 import { useEffect } from 'react'
 
 const FilterAccordion = ({ title, isOpen, onToggle, children }) => (
-    <div className="border-b border-white/10 last:border-0">
+    <div className="border-b border-primary/10 last:border-0">
         <button
             onClick={onToggle}
-            className="w-full py-4 flex items-center justify-between text-left text-sm font-medium text-white hover:text-white/80 transition-colors"
+            className="w-full py-4 flex items-center justify-between text-left text-sm font-medium text-primary hover:text-primary/80 transition-colors"
         >
             {title}
             <ChevronDown size={16} className={cn("transition-transform duration-300", isOpen ? "rotate-180" : "")} />
@@ -40,11 +40,11 @@ const Checkbox = ({ label, checked, onChange }) => (
     <label className="flex items-center gap-3 cursor-pointer group">
         <div className={cn(
             "w-5 h-5 rounded-md border flex items-center justify-center transition-all duration-200",
-            checked ? "bg-white border-white text-black" : "bg-transparent border-white/20 group-hover:border-white/50"
+            checked ? "bg-primary border-primary text-background" : "bg-transparent border-primary/20 group-hover:border-primary/50"
         )}>
             {checked && <Check size={12} strokeWidth={3} />}
         </div>
-        <span className={cn("text-sm transition-colors", checked ? "text-white" : "text-white/60 group-hover:text-white")}>
+        <span className={cn("text-sm transition-colors", checked ? "text-primary" : "text-primary/60 group-hover:text-primary")}>
             {label}
         </span>
         <input type="checkbox" className="hidden" checked={checked} onChange={onChange} />
@@ -100,22 +100,22 @@ const Shop = () => {
 
                 {/* Search Header */}
                 <div className="mb-16 text-center max-w-2xl mx-auto space-y-6">
-                    <h1 className="text-4xl md:text-5xl font-display text-white">COLLECTION</h1>
+                    <h1 className="text-4xl md:text-5xl font-display text-primary">COLLECTION</h1>
                     <div className="relative">
                         <GlassInput
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder="Search for products..."
-                            className="pl-12 py-5 rounded-full bg-white/5 border-white/10 focus:bg-black/50 transition-all text-lg"
+                            className="pl-12 py-5 rounded-full bg-primary/5 border-primary/10 focus:bg-primary/5 transition-all text-lg"
                         />
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50" size={20} />
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-primary/50" size={20} />
                     </div>
-                    <p className="text-white/40 text-sm">Showing {filteredProducts.length} results</p>
+                    <p className="text-primary/40 text-sm">Showing {filteredProducts.length} results</p>
                 </div>
 
                 {/* Trending Section */}
                 <div className="mb-20">
-                    <h2 className="text-xl font-display tracking-widest text-white mb-8 border-b border-white/10 pb-4">TRENDING NOW</h2>
+                    <h2 className="text-xl font-display tracking-widest text-primary mb-8 border-b border-primary/10 pb-4">TRENDING NOW</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {products.filter(p => p.price > 200).slice(0, 3).map((product, idx) => (
                             <ProductCard key={`trending-${product.id}`} product={product} index={idx} />
@@ -127,9 +127,9 @@ const Shop = () => {
                     {/* Advanced Sidebar */}
                     <div className="w-full md:w-64 shrink-0 space-y-8">
                         <GlassCard className="sticky top-28 p-6 rounded-3xl bg-glass-10/30 backdrop-blur-xl">
-                            <div className="flex items-center gap-2 mb-6 pb-4 border-b border-white/10">
-                                <SlidersHorizontal size={18} className="text-white" />
-                                <span className="font-display font-bold tracking-widest text-sm text-white">FILTERS</span>
+                            <div className="flex items-center gap-2 mb-6 pb-4 border-b border-primary/10">
+                                <SlidersHorizontal size={18} className="text-primary" />
+                                <span className="font-display font-bold tracking-widest text-sm text-primary">FILTERS</span>
                             </div>
 
                             <div className="space-y-2">
@@ -152,9 +152,9 @@ const Shop = () => {
                                             max="1000"
                                             value={activeFilters.priceRange}
                                             onChange={(e) => setActiveFilters(prev => ({ ...prev, priceRange: Number(e.target.value) }))}
-                                            className="w-full h-1 bg-white/20 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white"
+                                            className="w-full h-1 bg-primary/20 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-primary"
                                         />
-                                        <div className="flex justify-between text-xs text-white/50 mt-4 font-mono">
+                                        <div className="flex justify-between text-xs text-primary/50 mt-4 font-mono">
                                             <span>RM 0</span>
                                             <span>RM {activeFilters.priceRange}</span>
                                         </div>
@@ -189,10 +189,10 @@ const Shop = () => {
 
                         {filteredProducts.length === 0 && (
                             <div className="py-20 text-center space-y-4">
-                                <p className="text-white/40 text-lg">No products match your filters.</p>
+                                <p className="text-primary/40 text-lg">No products match your filters.</p>
                                 <button
                                     onClick={() => setActiveFilters({ categories: [], colors: [], priceRange: 1000 })}
-                                    className="text-white underline underline-offset-4 hover:text-white/80"
+                                    className="text-primary underline underline-offset-4 hover:text-primary/80"
                                 >
                                     Clear all filters
                                 </button>

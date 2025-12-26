@@ -9,7 +9,7 @@ const GlassButton = React.forwardRef(({ className, children, ...props }, ref) =>
             whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.15)' }}
             whileTap={{ scale: 0.95 }}
             className={cn(
-                "glass-btn relative overflow-hidden rounded-full font-display font-medium text-white",
+                "glass-btn relative overflow-hidden rounded-full font-display font-medium text-primary",
                 className
             )}
             {...props}

@@ -34,11 +34,11 @@ const Portfolio = () => {
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-6xl md:text-8xl font-display text-white mb-6 uppercase tracking-tighter"
+                        className="text-6xl md:text-8xl font-display text-primary mb-6 uppercase tracking-tighter"
                     >
                         Lookbook
                     </motion.h1>
-                    <p className="text-xl text-white/60 font-light">
+                    <p className="text-xl text-primary/60 font-light">
                         Retrospective visual archives of our defining collections.
                     </p>
                 </div>
@@ -76,10 +76,10 @@ const PortfolioItem = ({ item, index }) => {
             </div>
 
             <div className="flex-1 text-center md:text-left">
-                <span className="text-sm font-light text-white/40 tracking-widest block mb-4">COLLECTION {item.year}</span>
-                <h2 className="text-4xl md:text-6xl font-display text-white mb-6">{item.title}</h2>
-                <div className="w-12 h-px bg-white/20 mx-auto md:mx-0 mb-6" />
-                <p className="text-lg text-white/70 font-light leading-relaxed max-w-md mx-auto md:mx-0">
+                <span className="text-sm font-light text-primary/40 tracking-widest block mb-4">COLLECTION {item.year}</span>
+                <h2 className="text-4xl md:text-6xl font-display text-primary mb-6">{item.title}</h2>
+                <div className="w-12 h-px bg-primary/20 mx-auto md:mx-0 mb-6" />
+                <p className="text-lg text-primary/70 font-light leading-relaxed max-w-md mx-auto md:mx-0">
                     {item.desc}
                 </p>
             </div>
