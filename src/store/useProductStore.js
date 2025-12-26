@@ -51,12 +51,32 @@ export const useProductStore = create((set, get) => ({
     getProduct: async (id) => {
         set({ loading: true, error: null });
         try {
+            // Check API first
             const response = await fetch(`${API_URL}/${id}`);
-            if (!response.ok) throw new Error('Failed to fetch product');
+
+            if (!response.ok) {
+                // If API fails (e.g., 404 or backend down), try local data
+                console.warn(`Product API failed for ID ${id}, trying local data.`);
+                const localProduct = demoProducts.find(p => p._id === id || p.id === id);
+                if (localProduct) {
+                    set({ loading: false });
+                    return localProduct;
+                }
+                throw new Error('Failed to fetch product');
+            }
+
             const data = await response.json();
             set({ loading: false });
             return data;
         } catch (error) {
+            console.warn("Backend not reachable for single product, checking demo data.", error);
+            const localProduct = demoProducts.find(p => p._id === id || p.id === id);
+
+            if (localProduct) {
+                set({ loading: false, error: null });
+                return localProduct;
+            }
+
             set({ error: error.message, loading: false });
             return null;
         }
