@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { products as demoProducts } from '@/data/products';
 
 const API_URL = 'http://localhost:5000/api/products';
 
@@ -10,6 +11,7 @@ export const useProductStore = create((set, get) => ({
     fetchProducts: async (filters = {}) => {
         set({ loading: true, error: null });
         try {
+            // Attempt to fetch from API
             const queryParams = new URLSearchParams();
             if (filters.category) queryParams.append('category', filters.category);
             if (filters.isBestSeller) queryParams.append('isBestSeller', filters.isBestSeller);
@@ -17,11 +19,32 @@ export const useProductStore = create((set, get) => ({
             if (filters.search) queryParams.append('search', filters.search);
 
             const response = await fetch(`${API_URL}?${queryParams}`);
-            if (!response.ok) throw new Error('Failed to fetch products');
+
+            if (!response.ok) {
+                console.warn("Backend not connected, using demo data.");
+                // Simply return demo data if backend fails, applying basic frontend filtering if needed
+                let data = demoProducts;
+                if (filters.category) data = data.filter(p => p.category === filters.category);
+                if (filters.isBestSeller) data = data.filter(p => p.isBestSeller);
+                if (filters.isNewArrival) data = data.filter(p => p.isNewArrival);
+                if (filters.search) data = data.filter(p => p.name.toLowerCase().includes(filters.search.toLowerCase()));
+
+                set({ products: data, loading: false });
+                return;
+            }
+
             const data = await response.json();
             set({ products: data, loading: false });
         } catch (error) {
-            set({ error: error.message, loading: false });
+            console.warn("Backend not reachable, defaulting to demo data.", error);
+            // Fallback to demo data on network error
+            let data = demoProducts;
+            if (filters.category) data = data.filter(p => p.category === filters.category);
+            if (filters.isBestSeller) data = data.filter(p => p.isBestSeller);
+            if (filters.isNewArrival) data = data.filter(p => p.isNewArrival);
+            if (filters.search) data = data.filter(p => p.name.toLowerCase().includes(filters.search.toLowerCase()));
+
+            set({ products: data, loading: false, error: null });
         }
     },
 
